@@ -16,13 +16,13 @@
             <span class="logo-text">学生故事</span>
         </div>
         <div class="nav-links">
-            <a href="#home" class="nav-link active">首页</a>
-            <a href="#students" class="nav-link">故事集</a>
-            <a href="#reflections" class="nav-link">手记</a>
-            <a href="#about" class="nav-link">关于</a>
+            <a href="#/" class="nav-link active" data-nav="home">首页</a>
+            <a href="#/students" class="nav-link" data-nav="students">故事集</a>
+            <a href="#/about" class="nav-link" data-nav="about">关于</a>
         </div>
     </nav>
 
+    <!-- ===== 首页 ===== -->
     <section id="home" class="hero">
         <div class="hero-bg-overlay"></div>
         <div class="hero-content">
@@ -48,7 +48,7 @@
                     <span class="stat-label">天的陪伴</span>
                 </div>
             </div>
-            <a href="#students" class="hero-cta">
+            <a href="#/students" class="hero-cta">
                 <span>阅读故事</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -60,6 +60,7 @@
         <div class="hero-glow glow-1"></div>
     </section>
 
+    <!-- ===== 故事集 ===== -->
     <section id="students" class="characters-section">
         <div class="section-header">
             <span class="section-tag">STUDENT STORIES</span>
@@ -70,102 +71,74 @@
             <button class="filter-btn active" data-filter="all">全部</button>
             <button class="filter-btn" data-filter="grade9">九年级</button>
             <button class="filter-btn" data-filter="grade8">八年级</button>
-            <button class="filter-btn" data-filter="grade10">高一</button>
+            <button class="filter-btn" data-filter="senior1">高一</button>
         </div>
         <div class="char-grid" id="charGrid"></div>
     </section>
 
-    <section id="reflections" class="worlds-section">
-        <div class="section-header">
-            <span class="section-tag">TEACHER'S JOURNAL</span>
-            <h2 class="section-title">手记</h2>
-            <p class="section-desc">课堂之外的思考</p>
-        </div>
-        <div class="worlds-grid">
-            <div class="world-card" data-reveal="left">
-                <div class="world-card-bg" style="background: linear-gradient(135deg, #1a1a0e, #2d2518, #3d3020)"></div>
-                <div class="world-card-content">
-                    <span class="world-tag">洞察</span>
-                    <h3>看见学生</h3>
-                    <p>出题的出发点不是真题考什么，是学生缺什么。看见学生缺什么→找到真题里练这个能力的题→拆解→用学生的世界做材料出同样的题。</p>
+    <!-- ===== 学生详情页（章节目录） ===== -->
+    <div id="studentPage" class="page-overlay" style="display:none">
+        <div class="student-page-inner">
+            <button class="back-btn" id="backToStudents">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <span>返回故事集</span>
+            </button>
+            <div class="student-header">
+                <div class="student-portrait" id="spPortrait"></div>
+                <div class="student-meta">
+                    <h1 id="spName"></h1>
+                    <p class="student-subtitle" id="spTitle"></p>
+                    <p class="student-desc" id="spDesc"></p>
+                    <div id="spTags" class="char-card-tags"></div>
                 </div>
             </div>
-            <div class="world-card" data-reveal="up">
-                <div class="world-card-bg" style="background: linear-gradient(135deg, #1a0e0e, #2d1818, #3d2020)"></div>
-                <div class="world-card-content">
-                    <span class="world-tag">行业</span>
-                    <h3>体验者与付款者</h3>
-                    <p>教培是一个体验者和付款者分离的行业。学生是体验者，家长是付款者。家长要的不是孩子成长，是安心感。</p>
-                </div>
-            </div>
-            <div class="world-card" data-reveal="right">
-                <div class="world-card-bg" style="background: linear-gradient(135deg, #0e1a1a, #182d2d, #203d3d)"></div>
-                <div class="world-card-content">
-                    <span class="world-tag">方法</span>
-                    <h3>固定的不是结果</h3>
-                    <p>每天30分钟，看档案→想她缺什么→找真题→换材料→出题。固定的不是结果，是动作、时间、对象。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about-section">
-        <div class="section-header">
-            <span class="section-tag">ABOUT</span>
-            <h2 class="section-title">关于这个站点</h2>
-        </div>
-        <div class="about-content">
-            <p>我是一个一对一教培老师，在南昌教语文。这里记录的是我和学生之间的真实故事。</p>
-            <p>所有学生名字已做化名处理。故事中的人是真实的，但他们的身份受到保护。</p>
-            <p>我相信每一个学生都值得被看见——不是作为成绩单上的数字，而是作为一个完整的人。</p>
-        </div>
-    </section>
-
-    <!-- 学生详情模态框 -->
-    <div class="modal-overlay" id="charModal">
-        <div class="modal-container story-modal">
-            <button class="modal-close" id="modalClose">✕</button>
-            <div class="modal-inner">
-                <div class="modal-visual">
-                    <div class="modal-portrait" id="modalPortrait"></div>
-                    <div class="modal-name-plate">
-                        <h2 id="modalName"></h2>
-                        <span class="modal-title-text" id="modalTitle"></span>
-                    </div>
-                </div>
-                <div class="modal-info">
-                    <div class="modal-tags" id="modalTags"></div>
-                    <div class="modal-section">
-                        <h3>一句话</h3>
-                        <p id="modalDesc"></p>
-                    </div>
-                    <div class="modal-section">
-                        <h3>基本信息</h3>
-                        <div class="info-grid" id="modalInfo"></div>
-                    </div>
-                    <div class="modal-section">
-                        <div class="section-header-inline">
-                            <h3>故事</h3>
-                            <div class="version-tabs" id="versionTabs"></div>
-                        </div>
-                        <div class="version-hint" id="versionHint">点击 🔒 标签可解锁更多内容</div>
-                        <div class="story-timeline" id="modalStory"></div>
-                    </div>
-                </div>
+            <div class="chapters-section">
+                <h2>章节目录</h2>
+                <div id="chapterList" class="chapter-list"></div>
             </div>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <span class="logo-icon">📖</span>
-                <span>学生故事</span>
+    <!-- ===== 章节阅读页 ===== -->
+    <div id="chapterPage" class="page-overlay" style="display:none">
+        <div class="chapter-page-inner">
+            <button class="back-btn" id="backToStudent">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <span>返回目录</span>
+            </button>
+            <h1 class="chapter-title" id="chTitle"></h1>
+            <div class="chapter-meta">
+                <span class="chapter-date" id="chDate"></span>
             </div>
-            <p class="footer-text">每一个学生都值得被看见</p>
-            <div class="footer-divider"></div>
-            <p class="footer-copyright">© 2026 学生故事 · 真实记录，化名保护</p>
+
+            <div class="version-bar">
+                <div class="version-tabs" id="versionTabs"></div>
+                <button class="export-btn" id="exportBtn" title="复制到剪贴板">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                    <span>复制</span>
+                </button>
+            </div>
+
+            <div class="chapter-content" id="chContent"></div>
         </div>
+    </div>
+
+    <!-- ===== 关于 ===== -->
+    <section id="about" class="about-section">
+        <div class="section-header">
+            <span class="section-tag">ABOUT</span>
+            <h2 class="section-title">关于这个项目</h2>
+        </div>
+        <div class="about-content">
+            <p>我是一名一对一教培老师，在南昌教初中和高中语文。</p>
+            <p>这里记录的是我和学生之间的真实故事。不是教学案例，不是提分攻略。是那些发生在课堂之外的、真正重要的事情。</p>
+            <p>所有故事均已获得化名处理，保护学生隐私。</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-line"></div>
+        <p class="footer-copyright">© 2026 学生故事 · 一个教培老师的真实记录</p>
     </footer>
 
     <script src="script.js"></script>
